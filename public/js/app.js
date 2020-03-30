@@ -1975,7 +1975,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "article-cmp",
   props: ['article-data'],
@@ -2086,7 +2085,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -6761,7 +6759,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.article[data-v-91ff0922] {\n    background-color: #ffffff;\n    padding: 5px 7px;\n    margin: 10px;\n    border-radius: 6px;\n    box-shadow: 1px 4px 10px rgba(0,0,0,0.2);\n    transition: all 0.2s;\n}\n.article[data-v-91ff0922]:hover {\n    box-shadow: 1px 2px 2px rgba(0,0,0,0.16);\n    transition: all 0.2s;\n}\n.article-title[data-v-91ff0922] {\n    color: #bbb;\n    border-bottom: 1px solid #aaa;\n}\n.article-title .d-inline-block[data-v-91ff0922] {\n    width: 23px;\n    text-align: center;\n    display: inline-block;\n    border-radius: 10px;\n    cursor: pointer;\n}\n.article-title .d-inline-block.active[data-v-91ff0922] {\n    background-color: lightcyan;\n}\n.article-title h2[data-v-91ff0922] {\n    display: inline-block;\n    width: 90%;\n}\n.menu[data-v-91ff0922] {\n    display: inline-block;\n    text-align: center;\n    padding: 5px;\n    width: 30px;\n    border-radius: 25px;\n    background-color: antiquewhite;\n}\n.menu[data-v-91ff0922]::before {\n    content: '...';\n}\n", ""]);
+exports.push([module.i, "\n.article[data-v-91ff0922] {\n    background-color: #ffffff;\n    margin: 10px;\n    border-radius: 6px;\n    box-shadow: 1px 4px 10px rgba(0,0,0,0.2);\n    transition: all 0.2s;\n}\n.article[data-v-91ff0922]:hover {\n    box-shadow: 1px 2px 2px rgba(0,0,0,0.16);\n    transition: all 0.2s;\n}\n.article-title[data-v-91ff0922] {\n    padding: 5px 10px;\n    color: #bbb;\n    border-bottom: 1px solid #e6f3ff;\n}\n.article-title .d-inline-block[data-v-91ff0922] {\n    width: 23px;\n    text-align: center;\n    display: inline-block;\n    border-radius: 10px;\n    cursor: pointer;\n    margin: 5px;\n}\n.article-title .d-inline-block.active[data-v-91ff0922] {\n    background-color: lightcyan;\n}\n.article-title h2[data-v-91ff0922] {\n    margin-bottom: 0;\n    display: inline-block;\n    width: 90%;\n}\n.menu[data-v-91ff0922] {\n    display: inline-block;\n    text-align: center;\n    padding: 5px;\n    width: 30px;\n    border-radius: 25px;\n    background-color: antiquewhite;\n}\n.menu[data-v-91ff0922]::before {\n    content: '...';\n}\n", ""]);
 
 // exports
 
@@ -6780,7 +6778,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.photo[data-v-9f8f3622] {\n    background-color: #ffffff;\n    padding: 5px 7px;\n    margin: 10px;\n    border-radius: 6px;\n    box-shadow: 1px 4px 10px rgba(0,0,0,0.2);\n    transition: all 0.2s;\n}\n.photo[data-v-9f8f3622]:hover {\n    box-shadow: 1px 2px 2px rgba(0,0,0,0.16);\n    transition: all 0.2s;\n}\n.photo-title[data-v-9f8f3622] {\n    color: #bbb;\n    border-bottom: 1px solid #aaa;\n}\n.photo-title .d-inline-block[data-v-9f8f3622] {\n    width: 23px;\n    text-align: center;\n    display: inline-block;\n    border-radius: 10px;\n    cursor: pointer;\n}\n.photo-title .d-inline-block.active[data-v-9f8f3622] {\n    background-color: lightcyan;\n}\n.photo-title h2[data-v-9f8f3622] {\n    display: inline-block;\n    width: 90%;\n}\n.menu[data-v-9f8f3622] {\n    display: inline-block;\n    text-align: center;\n    padding: 5px;\n    width: 30px;\n    border-radius: 25px;\n    background-color: antiquewhite;\n}\n.menu[data-v-9f8f3622]::before {\n    content: '...';\n}\n.photo-content img[data-v-9f8f3622] {\n    max-width: 100%;\n    max-height: 100%;\n}\n", ""]);
+exports.push([module.i, "\n.photo[data-v-9f8f3622] {\n    background-color: #ffffff;\n    margin: 10px;\n    border-radius: 6px;\n    box-shadow: 1px 4px 10px rgba(0,0,0,0.2);\n    transition: all 0.2s;\n}\n.photo[data-v-9f8f3622]:hover {\n    box-shadow: 1px 2px 2px rgba(0,0,0,0.16);\n    transition: all 0.2s;\n}\n.photo-title[data-v-9f8f3622] {\n    padding: 5px 10px;\n    color: #bbb;\n    border-bottom: 1px solid #e6f3ff;\n}\n.photo-title .d-inline-block[data-v-9f8f3622] {\n    width: 23px;\n    text-align: center;\n    display: inline-block;\n    border-radius: 10px;\n    cursor: pointer;\n    margin: 5px;\n}\n.photo-title .d-inline-block.active[data-v-9f8f3622] {\n    background-color: lightcyan;\n}\n.photo-title h2[data-v-9f8f3622] {\n    margin-bottom: 0;\n    display: inline-block;\n    width: 90%;\n}\n.menu[data-v-9f8f3622] {\n    display: inline-block;\n    text-align: center;\n    padding: 5px;\n    width: 30px;\n    border-radius: 25px;\n    background-color: antiquewhite;\n}\n.menu[data-v-9f8f3622]::before {\n    content: '...';\n}\n.photo-content img[data-v-9f8f3622] {\n    max-width: 100%;\n    max-height: 100%;\n}\n", ""]);
 
 // exports
 
@@ -38364,26 +38362,26 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "article-content" }, [
-      _c("p", [_vm._v(_vm._s(this.content))]),
-      _vm._v(" "),
-      _c("div", { staticClass: "article-footer" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-6" }, [
-            _c("div", { staticClass: "author" }, [
-              _c("p", [
-                _vm._v("Автор: "),
-                _c("b", [_vm._v(_vm._s(_vm.articleData.author.name))])
-              ])
+      _c("p", [_vm._v(_vm._s(this.content))])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "article-footer" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-6" }, [
+          _c("div", { staticClass: "author" }, [
+            _c("p", [
+              _vm._v("Автор: "),
+              _c("b", [_vm._v(_vm._s(_vm.articleData.author.name))])
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6" }, [
-            _vm._v(
-              "\n                    Лайков: " +
-                _vm._s(this.articleData.likes_count) +
-                "\n                "
-            )
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6" }, [
+          _vm._v(
+            "\n                Лайков: " +
+              _vm._s(this.articleData.likes_count) +
+              "\n            "
+          )
         ])
       ])
     ])
@@ -38488,26 +38486,26 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "photo-content" }, [
-      _c("img", { attrs: { src: _vm.photoUrl, alt: _vm.photoData.title } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "photo-footer" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-6" }, [
-            _c("div", { staticClass: "author" }, [
-              _c("p", [
-                _vm._v("Автор: "),
-                _c("b", [_vm._v(_vm._s(_vm.photoData.author.name))])
-              ])
+      _c("img", { attrs: { src: _vm.photoUrl, alt: _vm.photoData.title } })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "photo-footer" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-6" }, [
+          _c("div", { staticClass: "author" }, [
+            _c("p", [
+              _vm._v("Автор: "),
+              _c("b", [_vm._v(_vm._s(_vm.photoData.author.name))])
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6" }, [
-            _vm._v(
-              "\n                    Лайков: " +
-                _vm._s(this.photoData.likes_count) +
-                "\n                "
-            )
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6" }, [
+          _vm._v(
+            "\n                Лайков: " +
+              _vm._s(this.photoData.likes_count) +
+              "\n            "
+          )
         ])
       ])
     ])

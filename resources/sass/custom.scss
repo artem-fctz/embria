@@ -37,10 +37,18 @@ body {
 .photo-title, .article-title {
     max-height: 70px;
     overflow: hidden;
+
+}
+
+.photo-content, .article-content {
+    padding: 0 10px;
 }
 
 .photo-footer, .article-footer {
+    border-top: 1px solid #dbeeff;
+    padding: 5px 10px;
     background-color: aliceblue;
+    border-radius: 0 0 6px 6px;
 
     & p {
         margin-bottom: 0;

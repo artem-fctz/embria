@@ -16,19 +16,18 @@
         </div>
         <div class="article-content">
             <p>{{ this.content }}</p>
-            <div class="article-footer">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="author">
-                            <p>Автор: <b>{{ articleData.author.name }}</b></p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        Лайков: {{ this.articleData.likes_count }}
+        </div>
+        <div class="article-footer">
+            <div class="row">
+                <div class="col-6">
+                    <div class="author">
+                        <p>Автор: <b>{{ articleData.author.name }}</b></p>
                     </div>
                 </div>
+                <div class="col-6">
+                    Лайков: {{ this.articleData.likes_count }}
+                </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -106,7 +105,6 @@
 <style scoped>
     .article {
         background-color: #ffffff;
-        padding: 5px 7px;
         margin: 10px;
         border-radius: 6px;
         box-shadow: 1px 4px 10px rgba(0,0,0,0.2);
@@ -119,8 +117,9 @@
     }
 
     .article-title {
+        padding: 5px 10px;
         color: #bbb;
-        border-bottom: 1px solid #aaa;
+        border-bottom: 1px solid #e6f3ff;
     }
 
     .article-title .d-inline-block {
@@ -129,6 +128,7 @@
         display: inline-block;
         border-radius: 10px;
         cursor: pointer;
+        margin: 5px;
     }
 
     .article-title .d-inline-block.active {
@@ -136,6 +136,7 @@
     }
 
     .article-title h2 {
+        margin-bottom: 0;
         display: inline-block;
         width: 90%;
     }

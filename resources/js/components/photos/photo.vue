@@ -16,19 +16,18 @@
         </div>
         <div class="photo-content">
             <img :src="photoUrl" :alt="photoData.title">
-            <div class="photo-footer">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="author">
-                            <p>Автор: <b>{{ photoData.author.name }}</b></p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        Лайков: {{ this.photoData.likes_count }}
+        </div>
+        <div class="photo-footer">
+            <div class="row">
+                <div class="col-6">
+                    <div class="author">
+                        <p>Автор: <b>{{ photoData.author.name }}</b></p>
                     </div>
                 </div>
+                <div class="col-6">
+                    Лайков: {{ this.photoData.likes_count }}
+                </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -103,7 +102,6 @@
 <style scoped>
     .photo {
         background-color: #ffffff;
-        padding: 5px 7px;
         margin: 10px;
         border-radius: 6px;
         box-shadow: 1px 4px 10px rgba(0,0,0,0.2);
@@ -116,8 +114,9 @@
     }
 
     .photo-title {
+        padding: 5px 10px;
         color: #bbb;
-        border-bottom: 1px solid #aaa;
+        border-bottom: 1px solid #e6f3ff;
     }
 
     .photo-title .d-inline-block {
@@ -126,6 +125,7 @@
         display: inline-block;
         border-radius: 10px;
         cursor: pointer;
+        margin: 5px;
     }
 
     .photo-title .d-inline-block.active {
@@ -133,6 +133,7 @@
     }
 
     .photo-title h2 {
+        margin-bottom: 0;
         display: inline-block;
         width: 90%;
     }
