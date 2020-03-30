@@ -1,3 +1,18 @@
 body {
     background-color: #d7ebff;
 }
+
+.photo, .photo-list {
+    & .preview {
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    th {
+        background-color: #49bcff;
+        border: 1px solid #2388af;
+        text-align: center;
+        padding: 3px 10px;
+        color: #001373;
+    }
+}
