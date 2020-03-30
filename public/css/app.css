@@ -10887,18 +10887,29 @@ body {
 }
 
 .photo .preview,
-.photo-list .preview {
+.photo-list .preview,
+.article .preview,
+.article-list .preview {
   max-width: 200px;
   max-height: 200px;
 }
 
 .photo th,
-.photo-list th {
+.photo-list th,
+.article th,
+.article-list th {
   background-color: #49bcff;
   border: 1px solid #2388af;
   text-align: center;
   padding: 3px 10px;
   color: #001373;
+}
+
+.photo .underline,
+.photo-list .underline,
+.article .underline,
+.article-list .underline {
+  border-bottom: 1px solid #49bcff;
 }
 
 #sidebar {

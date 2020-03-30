@@ -2,7 +2,7 @@ body {
     background-color: #d7ebff;
 }
 
-.photo, .photo-list {
+.photo, .photo-list, .article, .article-list {
     & .preview {
         max-width: 200px;
         max-height: 200px;
@@ -14,6 +14,10 @@ body {
         text-align: center;
         padding: 3px 10px;
         color: #001373;
+    }
+
+    .underline {
+        border-bottom: 1px solid #49bcff;
     }
 }
 

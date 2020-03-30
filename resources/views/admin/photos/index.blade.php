@@ -14,6 +14,7 @@
         @if(count($photos))
             <table>
                 <tr>
+                    <th>ID</th>
                     <th>Название</th>
                     <th>Превью</th>
                     <th>Кол-во лайков</th>
@@ -21,8 +22,8 @@
                     <th>Удалить</th>
                 </tr>
                 @foreach($photos as $photo)
-
-                    <tr>
+                    <tr class="underline">
+                        <td>{{ $photo->id }}</td>
                         <td>{{ $photo->title }}</td>
                         <td>
                             @if($photo->getMedia('payload')->first())
