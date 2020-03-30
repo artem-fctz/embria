@@ -92,7 +92,7 @@ class ArticleController extends Controller
 
         $article->save();
 
-        return redirect("/admin/articles/{$article->id}")->with('success', 'Новое фото обновлено!');
+        return redirect("/admin/articles/{$article->id}")->with('success', 'Статья обновлена!');
     }
 
     /**
