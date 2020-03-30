@@ -3,13 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Photo;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 
+/**
+ * Class PhotoController
+ *
+ * @package App\Http\Controllers\Api
+ */
 class PhotoController extends Controller
 {
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function index()
     {

@@ -1,7 +1,7 @@
 <template>
     <div class="photo">
         <div class="photo-title">
-            <h2>{{ photoData.title }}</h2>
+            <h2>{{ entityData.title }}</h2>
             <div v-if="!userLoggedIn" class="menu" id="non-active-menu" data-toggle="tooltip" data-placement="top" title="Залогиньтесь, что-бы лайкать.">
 
             </div>
@@ -15,17 +15,17 @@
             </div>
         </div>
         <div class="photo-content">
-            <img :src="photoUrl" :alt="photoData.title">
+            <img :src="photoUrl" :alt="entityData.title">
         </div>
         <div class="photo-footer">
             <div class="row">
                 <div class="col-6">
                     <div class="author">
-                        <p>Автор: <b>{{ photoData.author.name }}</b></p>
+                        <p>Автор: <b>{{ entityData.author.name }}</b></p>
                     </div>
                 </div>
                 <div class="col-6">
-                    Лайков: {{ this.photoData.likes_count }}
+                    Лайков: {{ this.entityData.likes_count }}
                 </div>
             </div>
         </div>
@@ -33,68 +33,31 @@
 </template>
 
 <script>
+    import likeProcessor from '../mixins/likeProcessor'
+
     export default {
         name: "photo-cmp",
 
         props: [
-            'photo-data',
+            'entity-data',
         ],
+
+        mixins: [
+            likeProcessor
+        ],
+
         mounted() {
-            this.userLoggedIn = window.userLoggedIn;
-            this.userID = window.userID;
-
-            this.photoUrl = `/storage/${this.photoData.media[0].id}/${this.photoData.media[0].file_name}`;
-
-            if (this.userID) {
-                axios
-                    .post('/api/likes/detect', {
-                        userID: this.userID,
-                        entityType: 'photo',
-                        entityId: this.photoData.id,
-                    })
-                    .then((response) => {
-                        this.isActivated = response.data.detected;
-                    });
-            }
-
-            this.getLikes();
+            this.photoUrl = `/storage/${this.entityData.media[0].id}/${this.entityData.media[0].file_name}`;
         },
 
         data: function () {
             return {
-                userLoggedIn: false,
-                isActivated: false,
+                entityType: 'photo',
                 photoUrl: '',
             }
         },
 
         methods: {
-            toggleLike: function () {
-                this.isActivated = !this.isActivated;
-
-                axios
-                    .post('/api/likes', {
-                        userID: this.userID,
-                        entityType: 'photo',
-                        entityId: this.photoData.id,
-                    })
-                    .then(() => {
-                        this.getLikes();
-                    });
-            },
-
-            getLikes: function () {
-                axios
-                    .get('/api/likes', {
-                        params: {
-                            entityType: 'photo',
-                            entityId: this.photoData.id,
-                        }
-                    })
-                    .then(response => {
-                        this.photoData.likes_count = response.data.count;
-                    });
-            },
         },
     }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="photos.length" v-for="photo in photos">
-            <photo-cmp :photo-data="photo"></photo-cmp>
+            <photo-cmp :entity-data="photo"></photo-cmp>
         </div>
         <div v-if="!photos.length">
             <h3>Фотографий еще нет :(</h3>

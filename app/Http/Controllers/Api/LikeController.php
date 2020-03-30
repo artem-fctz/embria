@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 
 /**
  * Class LikeController
+ *
  * @package App\Http\Controllers\Api
  */
 class LikeController extends Controller
@@ -24,9 +25,9 @@ class LikeController extends Controller
         $type = $request->get('entityType');
         $id = intval($request->get('entityId'));
 
-        if($type === 'article') {
+        if ($type === 'article') {
             $type = Article::class;
-        } elseif($type === 'photo') {
+        } elseif ($type === 'photo') {
             $type = Photo::class;
         } else {
             return response()->json(['status' => 'fail', 'message' => 'Unprocessable entity type.']);
@@ -52,9 +53,9 @@ class LikeController extends Controller
         $id = intval($request->get('entityId'));
         $authorId = intval($request->get('userID'));
 
-        if($type === 'article') {
+        if ($type === 'article') {
             $type = Article::class;
-        } elseif($type === 'photo') {
+        } elseif ($type === 'photo') {
             $type = Photo::class;
         } else {
             return response()->json(['status' => 'fail', 'message' => 'Unprocessable entity type.']);
@@ -88,9 +89,9 @@ class LikeController extends Controller
         $id = intval($request->get('entityId'));
         $authorId = intval($request->get('userID'));
 
-        if($type === 'article') {
+        if ($type === 'article') {
             $type = Article::class;
-        } elseif($type === 'photo') {
+        } elseif ($type === 'photo') {
             $type = Photo::class;
         } else {
             return response()->json(['status' => 'fail', 'message' => 'Unprocessable entity type.']);

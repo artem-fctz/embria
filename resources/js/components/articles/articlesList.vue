@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="articles.length" v-for="article in articles">
-            <article-cmp :article-data="article"></article-cmp>
+            <article-cmp :entity-data="article"></article-cmp>
         </div>
         <div v-if="!articles.length">
             <h3>Статей еще нет :(</h3>

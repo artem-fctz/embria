@@ -3,13 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Article;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
 
+/**
+ * Class ArticleController
+ *
+ * @package App\Http\Controllers\Admin
+ */
 class ArticleController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index()
     {
@@ -19,7 +28,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
@@ -29,7 +38,7 @@ class ArticleController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|Redirector
      */
     public function store(Request $request)
     {
@@ -43,13 +52,12 @@ class ArticleController extends Controller
         $article->save();
 
         return redirect("/admin/articles/{$article->id}")->with('success', 'Новая статья добавлена!');
-
     }
 
     /**
      * @param Article $article
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function show(Article $article)
     {
@@ -59,7 +67,7 @@ class ArticleController extends Controller
     /**
      * @param Article $article
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function edit(Article $article)
     {
@@ -70,15 +78,15 @@ class ArticleController extends Controller
      * @param Request $request
      * @param Article $article
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|Redirector
      */
     public function update(Request $request, Article $article)
     {
-        if($request->has('title') && $request->get('title') !== $article->title) {
+        if ($request->has('title') && $request->get('title') !== $article->title) {
             $article->title = $request->get('title');
         }
 
-        if($request->has('content') && $request->get('content') !== $article->content) {
+        if ($request->has('content') && $request->get('content') !== $article->content) {
             $article->content = $request->get('content');
         }
 
@@ -90,7 +98,7 @@ class ArticleController extends Controller
     /**
      * @param Article $article
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|Redirector
      * @throws \Exception
      */
     public function destroy(Article $article)

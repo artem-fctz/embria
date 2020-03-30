@@ -3,15 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Photo;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig;
 
+/**
+ * Class PhotoController
+ *
+ * @package App\Http\Controllers\Admin
+ */
 class PhotoController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return Factory|View
      */
     public function index()
     {
@@ -21,7 +31,7 @@ class PhotoController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
@@ -31,11 +41,11 @@ class PhotoController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|Redirector
      *
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws DiskDoesNotExist
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function store(Request $request)
     {
@@ -46,9 +56,8 @@ class PhotoController extends Controller
         $photo->author()->associate(auth()->user());
         $photo->save();
 
-
         //Store Image
-        if($request->hasFile('image') && $request->file('image')->isValid()){
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $photo->addMediaFromRequest('image')->toMediaCollection('payload');
         } else {
             $photo->delete();
@@ -62,7 +71,7 @@ class PhotoController extends Controller
     /**
      * @param Photo $photo
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function show(Photo $photo)
     {
@@ -72,7 +81,7 @@ class PhotoController extends Controller
     /**
      * @param Photo $photo
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function edit(Photo $photo)
     {
@@ -83,34 +92,32 @@ class PhotoController extends Controller
      * @param Request $request
      * @param Photo   $photo
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|Redirector
      *
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws DiskDoesNotExist
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function update(Request $request, Photo $photo)
     {
-        if($request->has('title') && $request->get('title') !== $photo->title) {
+        if ($request->has('title') && $request->get('title') !== $photo->title) {
             $photo->title = $request->get('title');
 
             $photo->save();
         }
 
         //Store Image
-        if($request->hasFile('image') && $request->file('image')->isValid()){
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $photo->addMediaFromRequest('image')->toMediaCollection('payload');
         }
 
-
         return redirect("/admin/photos/{$photo->id}")->with('success', 'Информация о фото обновлена!');
-
     }
 
     /**
      * @param Photo $photo
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|Redirector
      *
      * @throws \Exception
      */

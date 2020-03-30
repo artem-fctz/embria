@@ -1941,6 +1941,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_likeProcessor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/likeProcessor */ "./resources/js/components/mixins/likeProcessor.js");
 //
 //
 //
@@ -1975,65 +1976,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "article-cmp",
-  props: ['article-data'],
+  props: ['entity-data'],
+  mixins: [_mixins_likeProcessor__WEBPACK_IMPORTED_MODULE_0__["default"]],
   mounted: function mounted() {
-    var _this = this;
+    this.content = this.entityData.content;
 
-    this.userLoggedIn = window.userLoggedIn;
-    this.userID = window.userID;
-    this.content = this.articleData.content;
-
-    if (this.articleData.content.length >= 250) {
-      this.content = this.articleData.content.slice(0, 248) + '...';
+    if (this.entityData.content.length >= 250) {
+      this.content = this.entityData.content.slice(0, 248) + '...';
     }
-
-    if (this.userID) {
-      axios.post('/api/likes/detect', {
-        userID: this.userID,
-        entityType: 'article',
-        entityId: this.articleData.id
-      }).then(function (response) {
-        _this.isActivated = response.data.detected;
-      });
-    }
-
-    this.getLikes();
   },
   data: function data() {
     return {
-      userLoggedIn: false,
-      isActivated: false,
+      entityType: 'article',
       content: ''
     };
   },
-  methods: {
-    toggleLike: function toggleLike() {
-      var _this2 = this;
-
-      this.isActivated = !this.isActivated;
-      axios.post('/api/likes', {
-        userID: this.userID,
-        entityType: 'article',
-        entityId: this.articleData.id
-      }).then(function () {
-        _this2.getLikes();
-      });
-    },
-    getLikes: function getLikes() {
-      var _this3 = this;
-
-      axios.get('/api/likes', {
-        params: {
-          entityType: 'article',
-          entityId: this.articleData.id
-        }
-      }).then(function (response) {
-        _this3.articleData.likes_count = response.data.count;
-      });
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -2085,6 +2046,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_likeProcessor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/likeProcessor */ "./resources/js/components/mixins/likeProcessor.js");
 //
 //
 //
@@ -2119,61 +2081,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "photo-cmp",
-  props: ['photo-data'],
+  props: ['entity-data'],
+  mixins: [_mixins_likeProcessor__WEBPACK_IMPORTED_MODULE_0__["default"]],
   mounted: function mounted() {
-    var _this = this;
-
-    this.userLoggedIn = window.userLoggedIn;
-    this.userID = window.userID;
-    this.photoUrl = "/storage/".concat(this.photoData.media[0].id, "/").concat(this.photoData.media[0].file_name);
-
-    if (this.userID) {
-      axios.post('/api/likes/detect', {
-        userID: this.userID,
-        entityType: 'photo',
-        entityId: this.photoData.id
-      }).then(function (response) {
-        _this.isActivated = response.data.detected;
-      });
-    }
-
-    this.getLikes();
+    this.photoUrl = "/storage/".concat(this.entityData.media[0].id, "/").concat(this.entityData.media[0].file_name);
   },
   data: function data() {
     return {
-      userLoggedIn: false,
-      isActivated: false,
+      entityType: 'photo',
       photoUrl: ''
     };
   },
-  methods: {
-    toggleLike: function toggleLike() {
-      var _this2 = this;
-
-      this.isActivated = !this.isActivated;
-      axios.post('/api/likes', {
-        userID: this.userID,
-        entityType: 'photo',
-        entityId: this.photoData.id
-      }).then(function () {
-        _this2.getLikes();
-      });
-    },
-    getLikes: function getLikes() {
-      var _this3 = this;
-
-      axios.get('/api/likes', {
-        params: {
-          entityType: 'photo',
-          entityId: this.photoData.id
-        }
-      }).then(function (response) {
-        _this3.photoData.likes_count = response.data.count;
-      });
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -38329,7 +38251,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "article" }, [
     _c("div", { staticClass: "article-title" }, [
-      _c("h2", [_vm._v(_vm._s(_vm.articleData.title))]),
+      _c("h2", [_vm._v(_vm._s(_vm.entityData.title))]),
       _vm._v(" "),
       !_vm.userLoggedIn
         ? _c("div", {
@@ -38371,7 +38293,7 @@ var render = function() {
           _c("div", { staticClass: "author" }, [
             _c("p", [
               _vm._v("Автор: "),
-              _c("b", [_vm._v(_vm._s(_vm.articleData.author.name))])
+              _c("b", [_vm._v(_vm._s(_vm.entityData.author.name))])
             ])
           ])
         ]),
@@ -38379,7 +38301,7 @@ var render = function() {
         _c("div", { staticClass: "col-6" }, [
           _vm._v(
             "\n                Лайков: " +
-              _vm._s(this.articleData.likes_count) +
+              _vm._s(this.entityData.likes_count) +
               "\n            "
           )
         ])
@@ -38416,7 +38338,7 @@ var render = function() {
         return _vm.articles.length
           ? _c(
               "div",
-              [_c("article-cmp", { attrs: { "article-data": article } })],
+              [_c("article-cmp", { attrs: { "entity-data": article } })],
               1
             )
           : _vm._e()
@@ -38453,7 +38375,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "photo" }, [
     _c("div", { staticClass: "photo-title" }, [
-      _c("h2", [_vm._v(_vm._s(_vm.photoData.title))]),
+      _c("h2", [_vm._v(_vm._s(_vm.entityData.title))]),
       _vm._v(" "),
       !_vm.userLoggedIn
         ? _c("div", {
@@ -38486,7 +38408,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "photo-content" }, [
-      _c("img", { attrs: { src: _vm.photoUrl, alt: _vm.photoData.title } })
+      _c("img", { attrs: { src: _vm.photoUrl, alt: _vm.entityData.title } })
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "photo-footer" }, [
@@ -38495,7 +38417,7 @@ var render = function() {
           _c("div", { staticClass: "author" }, [
             _c("p", [
               _vm._v("Автор: "),
-              _c("b", [_vm._v(_vm._s(_vm.photoData.author.name))])
+              _c("b", [_vm._v(_vm._s(_vm.entityData.author.name))])
             ])
           ])
         ]),
@@ -38503,7 +38425,7 @@ var render = function() {
         _c("div", { staticClass: "col-6" }, [
           _vm._v(
             "\n                Лайков: " +
-              _vm._s(this.photoData.likes_count) +
+              _vm._s(this.entityData.likes_count) +
               "\n            "
           )
         ])
@@ -38538,7 +38460,7 @@ var render = function() {
     [
       _vm._l(_vm.photos, function(photo) {
         return _vm.photos.length
-          ? _c("div", [_c("photo-cmp", { attrs: { "photo-data": photo } })], 1)
+          ? _c("div", [_c("photo-cmp", { attrs: { "entity-data": photo } })], 1)
           : _vm._e()
       }),
       _vm._v(" "),
@@ -51033,6 +50955,70 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_articlesList_vue_vue_type_template_id_4cdd695c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/mixins/likeProcessor.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/mixins/likeProcessor.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    getLikes: function getLikes(type) {
+      var _this = this;
+
+      axios.get('/api/likes', {
+        params: {
+          entityType: type,
+          entityId: this.entityData.id
+        }
+      }).then(function (response) {
+        _this.entityData.likes_count = response.data.count;
+      });
+    },
+    toggleLike: function toggleLike() {
+      var _this2 = this;
+
+      this.isActivated = !this.isActivated;
+      axios.post('/api/likes', {
+        userID: this.userID,
+        entityType: this.entityType,
+        entityId: this.entityData.id
+      }).then(function () {
+        _this2.getLikes(_this2.entityType);
+      });
+    }
+  },
+  mounted: function mounted() {
+    var _this3 = this;
+
+    this.userLoggedIn = window.userLoggedIn;
+    this.userID = window.userID; // this.photoUrl = `/storage/${this.entityData.media[0].id}/${this.entityData.media[0].file_name}`;
+
+    if (this.userID) {
+      axios.post('/api/likes/detect', {
+        userID: this.userID,
+        entityType: this.entityType,
+        entityId: this.entityData.id
+      }).then(function (response) {
+        _this3.isActivated = response.data.detected;
+      });
+    }
+
+    this.getLikes(this.entityType);
+  },
+  data: function data() {
+    return {
+      userLoggedIn: false,
+      isActivated: false
+    };
+  }
+});
 
 /***/ }),
 

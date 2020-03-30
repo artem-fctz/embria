@@ -1,7 +1,7 @@
 <template>
     <div class="article">
         <div class="article-title">
-            <h2>{{ articleData.title }}</h2>
+            <h2>{{ entityData.title }}</h2>
             <div v-if="!userLoggedIn" class="menu" id="non-active-menu" data-toggle="tooltip" data-placement="top" title="Залогиньтесь, что-бы лайкать.">
 
             </div>
@@ -21,11 +21,11 @@
             <div class="row">
                 <div class="col-6">
                     <div class="author">
-                        <p>Автор: <b>{{ articleData.author.name }}</b></p>
+                        <p>Автор: <b>{{ entityData.author.name }}</b></p>
                     </div>
                 </div>
                 <div class="col-6">
-                    Лайков: {{ this.articleData.likes_count }}
+                    Лайков: {{ this.entityData.likes_count }}
                 </div>
             </div>
         </div>
@@ -33,71 +33,34 @@
 </template>
 
 <script>
+    import likeProcessor from '../mixins/likeProcessor'
+
     export default {
         name: "article-cmp",
 
         props: [
-            'article-data',
+            'entity-data',
         ],
+
+        mixins: [
+            likeProcessor
+        ],
+
         mounted() {
-            this.userLoggedIn = window.userLoggedIn;
-            this.userID = window.userID;
-
-            this.content = this.articleData.content;
-            if (this.articleData.content.length >= 250) {
-                this.content = this.articleData.content.slice(0,248) + '...';
+            this.content = this.entityData.content;
+            if (this.entityData.content.length >= 250) {
+                this.content = this.entityData.content.slice(0,248) + '...';
             }
-
-            if (this.userID) {
-                axios
-                    .post('/api/likes/detect', {
-                        userID: this.userID,
-                        entityType: 'article',
-                        entityId: this.articleData.id,
-                    })
-                    .then((response) => {
-                        this.isActivated = response.data.detected;
-                    });
-            }
-
-            this.getLikes();
         },
 
         data: function () {
             return {
-                userLoggedIn: false,
-                isActivated: false,
+                entityType: 'article',
                 content: '',
             }
         },
 
         methods: {
-            toggleLike: function () {
-                this.isActivated = !this.isActivated;
-
-                axios
-                    .post('/api/likes', {
-                        userID: this.userID,
-                        entityType: 'article',
-                        entityId: this.articleData.id,
-                    })
-                    .then(() => {
-                        this.getLikes();
-                    });
-            },
-
-            getLikes: function () {
-                axios
-                    .get('/api/likes', {
-                        params: {
-                            entityType: 'article',
-                            entityId: this.articleData.id,
-                        }
-                    })
-                    .then(response => {
-                        this.articleData.likes_count = response.data.count;
-                    });
-            },
         },
     }
 </script>
