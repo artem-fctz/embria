@@ -10920,3 +10920,7 @@ body {
   overflow: hidden;
 }
 
+.alert {
+  margin-bottom: 0;
+}
+

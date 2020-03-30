@@ -51,6 +51,10 @@ class PhotoController extends Controller
         //Store Image
         if($request->hasFile('image') && $request->file('image')->isValid()){
             $photo->addMediaFromRequest('image')->toMediaCollection('payload');
+        } else {
+            $photo->delete();
+
+            return redirect("/admin/photos/")->with('error', 'Ошибка при сохранении изображения!');
         }
 
         return redirect("/admin/photos/{$photo->id}")->with('success', 'Новое фото добавлено!');
@@ -102,7 +106,7 @@ class PhotoController extends Controller
         }
 
 
-        return redirect("/admin/photos/{$photo->id}")->with('success', 'Новое фото обновлено!');
+        return redirect("/admin/photos/{$photo->id}")->with('success', 'Информация о фото обновлена!');
 
     }
 

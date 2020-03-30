@@ -19,7 +19,11 @@
 
             <div class="form-group col-12">
                 <label for="image">Файл:</label>
-                <img id="image" src="{{ $photo->getMedia('payload')->first()->getUrl('thumb') }}" alt="{{ $photo->title }}" class="preview">
+                @if($photo->getMedia('payload')->first())
+                    <img id="image" src="{{ $photo->getMedia('payload')->first()->getUrl('thumb') }}" alt="{{ $photo->title }}" class="preview">
+                @else
+                    Изображение не сохранилось
+                @endif
             </div>
         </div>
     </div>

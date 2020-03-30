@@ -24,7 +24,13 @@
 
                     <tr>
                         <td>{{ $photo->title }}</td>
-                        <td><img src="{{ $photo->getMedia('payload')->first()->getUrl('thumb') }}" alt="{{ $photo->title }}" class="preview"></td>
+                        <td>
+                            @if($photo->getMedia('payload')->first())
+                                <img src="{{ $photo->getMedia('payload')->first()->getUrl('thumb') }}" alt="{{ $photo->title }}" class="preview">
+                            @else
+                                No image :(
+                            @endif
+                        </td>
                         <td>{{ $photo->likes->count() }}</td>
                         <td><a href="{{ route('admin.photos.edit', $photo->id) }}">Редактировать</a></td>
                         <td>

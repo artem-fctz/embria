@@ -26,7 +26,11 @@
                 @endif
             </div>
 
-            <img src="{{ $photo->getMedia('payload')->first()->getUrl('thumb') }}" alt="{{ $photo->title }}">
+            @if($photo->getMedia('payload')->first())
+                <img src="{{ $photo->getMedia('payload')->first()->getUrl('thumb') }}" alt="{{ $photo->title }}" class="preview">
+            @else
+                No image :(
+            @endif
 
             <div class="form-group">
                 <label for="image">Файл</label>
