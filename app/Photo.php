@@ -42,4 +42,15 @@ class Photo extends Model  implements HasMedia
             ->height(232)
             ->sharpen(10);
     }
+
+
+    // this is a recommended way to declare event handlers
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($photo) { // before delete() method call this
+            $photo->likes()->delete();
+            // do the rest of the cleanup...
+        });
+    }
 }

@@ -22,4 +22,14 @@ class Article extends Model
     {
         return $this->morphMany('App\Like', 'likable');
     }
+
+    // this is a recommended way to declare event handlers
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($article) { // before delete() method call this
+            $article->likes()->delete();
+            // do the rest of the cleanup...
+        });
+    }
 }
