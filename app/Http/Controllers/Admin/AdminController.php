@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Article;
 use App\Like;
 use App\Photo;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-    //
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $countArticles = Article::count();

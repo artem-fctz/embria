@@ -18,7 +18,7 @@
 
                 <div class="form-group">
                     <label for="title">Название</label>
-                    <input id="title" name="title" class="form-control" type="text" value="{{ $article->title }}">
+                    <input id="title" name="title" class="form-control" type="text" value="{{ $article->title }}" tabindex="1">
 
                     @if ($errors->has('title'))
                         <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
 
                 <div class="form-group">
                     <label for="content">Содержание</label>
-                    <textarea id="content" name="content" class="form-control">{{ $article->content }}</textarea>
+                    <textarea id="content" name="content" class="form-control" tabindex="2">{{ $article->content }}</textarea>
                 </div>
 
                 <input type="submit" value="Сохранить" class="btn btn-success">

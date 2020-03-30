@@ -20,11 +20,8 @@ class PhotoController extends Controller
         return view('admin.photos.index', compact('photos'));
     }
 
-
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -32,11 +29,13 @@ class PhotoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @param Request $request
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      *
-     * @return \Illuminate\Http\Response
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     public function store(Request $request)
     {
@@ -61,11 +60,9 @@ class PhotoController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @param Photo $photo
      *
-     * @param  \App\Photo  $photo
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Photo $photo)
     {
@@ -73,11 +70,9 @@ class PhotoController extends Controller
     }
 
     /**
-     * EDIT the specified resource.
+     * @param Photo $photo
      *
-     * @param  \App\Photo  $photo
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Photo $photo)
     {
@@ -85,11 +80,14 @@ class PhotoController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @param Request $request
+     * @param Photo   $photo
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Photo  $photo
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     public function update(Request $request, Photo $photo)
     {
@@ -98,7 +96,6 @@ class PhotoController extends Controller
 
             $photo->save();
         }
-
 
         //Store Image
         if($request->hasFile('image') && $request->file('image')->isValid()){
@@ -111,10 +108,11 @@ class PhotoController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @param Photo $photo
      *
-     * @param  \App\Photo  $photo
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * @throws \Exception
      */
     public function destroy(Photo $photo)
     {

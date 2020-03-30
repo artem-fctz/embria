@@ -17,7 +17,7 @@
 
             <div class="form-group">
                 <label for="title">Название</label>
-                <input id="title" name="title" class="form-control" type="text" value="{{ $photo->title }}">
+                <input id="title" name="title" class="form-control" type="text" value="{{ $photo->title }}" tabindex="1">
 
                 @if ($errors->has('title'))
                     <span class="invalid-feedback" role="alert">
