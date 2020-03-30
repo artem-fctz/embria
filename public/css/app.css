@@ -10886,3 +10886,37 @@ body {
   background-color: #d7ebff;
 }
 
+.photo .preview,
+.photo-list .preview {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.photo th,
+.photo-list th {
+  background-color: #49bcff;
+  border: 1px solid #2388af;
+  text-align: center;
+  padding: 3px 10px;
+  color: #001373;
+}
+
+#sidebar {
+  background-color: aliceblue;
+  height: 92vh;
+}
+
+#sidebar ul > li {
+  list-style-type: none;
+}
+
+.va-top {
+  vertical-align: top;
+}
+
+.photo-title,
+.article-title {
+  max-height: 70px;
+  overflow: hidden;
+}
+

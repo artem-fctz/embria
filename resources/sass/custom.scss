@@ -16,3 +16,21 @@ body {
         color: #001373;
     }
 }
+
+#sidebar {
+    background-color: aliceblue;
+    height: 92vh;
+
+    & ul > li {
+        list-style-type: none;
+    }
+}
+
+.va-top {
+    vertical-align: top;
+}
+
+.photo-title, .article-title {
+    max-height: 70px;
+    overflow: hidden;
+}

@@ -12,14 +12,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group">
+            <div class="form-group col-6">
                 <label for="title">Название</label>
                 <input id="title" name="title" class="form-control" type="text" disabled value="{{ $photo->title }}">
             </div>
 
-            <div class="form-group">
-                <label for="image">Файл1</label>
-                <img src="{{ $photo->getMedia('payload')->first()->getUrl('thumb') }}" alt="{{ $photo->title }}" class="preview">
+            <div class="form-group col-12">
+                <label for="image">Файл:</label>
+                <img id="image" src="{{ $photo->getMedia('payload')->first()->getUrl('thumb') }}" alt="{{ $photo->title }}" class="preview">
             </div>
         </div>
     </div>

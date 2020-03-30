@@ -1,7 +1,13 @@
 @extends('layouts.admin')
 
 @section('page-content')
-    Количество статей: {{ $countArticles }} шт.
-    Количество фотографий: {{ $countPhotos }} шт.
-    Количество лайков: {{ $countLikes }} шт.
+    <div class="row">
+        Количество статей: {{ $countArticles }} шт.
+    </div>
+    <div class="row">
+        Количество фотографий: {{ $countPhotos }} шт.
+    </div>
+    <div class="row">
+        Количество лайков: {{ $countLikes }} шт.
+    </div>
 @endsection

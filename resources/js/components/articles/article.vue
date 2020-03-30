@@ -7,7 +7,7 @@
             </div>
             <div
                 v-if="userLoggedIn"
-                class="d-inline-block"
+                class="d-inline-block va-top"
                 :class="{'active': isActivated}"
                 @click="toggleLike"
             >
