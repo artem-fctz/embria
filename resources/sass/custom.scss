@@ -39,6 +39,18 @@ body {
     overflow: hidden;
 }
 
+.photo-footer, .article-footer {
+    background-color: aliceblue;
+
+    & p {
+        margin-bottom: 0;
+    }
+
+    & .row {
+        text-align: center;
+    }
+}
+
 .alert {
     margin-bottom: 0;
 }
