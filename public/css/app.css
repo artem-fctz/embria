@@ -10958,3 +10958,7 @@ body {
   margin-bottom: 0;
 }
 
+.invalid-feedback {
+  display: block;
+}
+

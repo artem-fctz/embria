@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Article;
+use App\Http\Requests\StoreArticle;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -36,11 +37,11 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param StoreArticle $request
      *
      * @return RedirectResponse|Redirector
      */
-    public function store(Request $request)
+    public function store(StoreArticle $request)
     {
         $title = $request->input('title');
         $content = $request->input('content');
@@ -75,19 +76,22 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param StoreArticle $request
      * @param Article $article
      *
      * @return RedirectResponse|Redirector
      */
-    public function update(Request $request, Article $article)
+    public function update(StoreArticle $request, Article $article)
     {
-        if ($request->has('title') && $request->get('title') !== $article->title) {
-            $article->title = $request->get('title');
+        $title = $request->get('title');
+        $content = $request->get('content');
+
+        if ($title !== $article->title) {
+            $article->title = $title;
         }
 
-        if ($request->has('content') && $request->get('content') !== $article->content) {
-            $article->content = $request->get('content');
+        if ($content !== $article->content) {
+            $article->content = $content;
         }
 
         $article->save();

@@ -50998,7 +50998,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this3 = this;
 
     this.userLoggedIn = window.userLoggedIn;
-    this.userID = window.userID; // this.photoUrl = `/storage/${this.entityData.media[0].id}/${this.entityData.media[0].file_name}`;
+    this.userID = window.userID;
 
     if (this.userID) {
       axios.post('/api/likes/detect', {

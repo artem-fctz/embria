@@ -30,6 +30,11 @@
                 <div class="form-group">
                     <label for="content">Содержание</label>
                     <textarea id="content" name="content" class="form-control" tabindex="2">{{ $article->content }}</textarea>
+                    @if ($errors->has('content'))
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('content') }}</strong>
+                    </span>
+                    @endif
                 </div>
 
                 <input type="submit" value="Сохранить" class="btn btn-success">
