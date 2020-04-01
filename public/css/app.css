@@ -10938,9 +10938,7 @@ body {
 
 .photo-footer,
 .article-footer {
-  border-top: 1px solid #dbeeff;
   padding: 5px 10px;
-  background-color: aliceblue;
   border-radius: 0 0 6px 6px;
 }
 
@@ -10952,6 +10950,16 @@ body {
 .photo-footer .row,
 .article-footer .row {
   text-align: center;
+}
+
+.photo-footer {
+  border-top: 1px solid #FFDBFA;
+  background-color: #ffeafb;
+}
+
+.article-footer {
+  border-top: 1px solid #dbeeff;
+  background-color: aliceblue;
 }
 
 .alert {

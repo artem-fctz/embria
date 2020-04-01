@@ -78,7 +78,7 @@
 
     .photo-title {
         padding: 5px 10px;
-        color: #bbb;
+        color: #b79696;
         border-bottom: 1px solid #e6f3ff;
     }
 
@@ -89,10 +89,19 @@
         border-radius: 10px;
         cursor: pointer;
         margin: 5px;
+        background-color: #fff;
+        transition: background-color 0.5s ease-in, box-shadow 0.3s ease-in;
+        box-shadow: none;
+    }
+
+    .photo-title .d-inline-block:hover {
+        box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        transition: background-color 0.5s ease-in, box-shadow 0.3s ease-in;
     }
 
     .photo-title .d-inline-block.active {
-        background-color: lightcyan;
+        background-color: #f3d3ed;
+        transition: background-color 0.5s ease-in, box-shadow 0.3s ease-in;
     }
 
     .photo-title h2 {

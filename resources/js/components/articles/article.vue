@@ -81,7 +81,7 @@
 
     .article-title {
         padding: 5px 10px;
-        color: #bbb;
+        color: #a0cbd2;
         border-bottom: 1px solid #e6f3ff;
     }
 
@@ -92,10 +92,20 @@
         border-radius: 10px;
         cursor: pointer;
         margin: 5px;
+        background-color: #fff;
+        transition: background-color 0.5s ease-in, box-shadow 0.3s ease-in;
+        box-shadow: none;
+    }
+
+
+    .article-title .d-inline-block:hover {
+        box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        transition: background-color 0.5s ease-in, box-shadow 0.3s ease-in;
     }
 
     .article-title .d-inline-block.active {
-        background-color: lightcyan;
+        background-color: #a0ecec;
+        transition: background-color 0.5s ease-in, box-shadow 0.3s ease-in;
     }
 
     .article-title h2 {
