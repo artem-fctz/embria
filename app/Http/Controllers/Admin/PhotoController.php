@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\StorePhoto;
+use App\Http\Requests\UpdatePhoto;
 use App\Photo;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
@@ -39,7 +40,7 @@ class PhotoController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param StorePhoto $request
      *
      * @return RedirectResponse|Redirector
      *
@@ -47,7 +48,7 @@ class PhotoController extends Controller
      * @throws FileDoesNotExist
      * @throws FileIsTooBig
      */
-    public function store(Request $request)
+    public function store(StorePhoto $request)
     {
         $title = $request->input('title');
 
@@ -56,14 +57,7 @@ class PhotoController extends Controller
         $photo->author()->associate(auth()->user());
         $photo->save();
 
-        //Store Image
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $photo->addMediaFromRequest('image')->toMediaCollection('payload');
-        } else {
-            $photo->delete();
-
-            return redirect("/admin/photos/")->with('error', 'Ошибка при сохранении изображения!');
-        }
+        $photo->addMediaFromRequest('image')->toMediaCollection('payload');
 
         return redirect("/admin/photos/{$photo->id}")->with('success', 'Новое фото добавлено!');
     }
@@ -89,7 +83,7 @@ class PhotoController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param UpdatePhoto $request
      * @param Photo   $photo
      *
      * @return RedirectResponse|Redirector
@@ -98,16 +92,18 @@ class PhotoController extends Controller
      * @throws FileDoesNotExist
      * @throws FileIsTooBig
      */
-    public function update(Request $request, Photo $photo)
+    public function update(UpdatePhoto $request, Photo $photo)
     {
-        if ($request->has('title') && $request->get('title') !== $photo->title) {
-            $photo->title = $request->get('title');
+        $title = $request->get('title');
+
+        if ($title !== $photo->title) {
+            $photo->title = $title;
 
             $photo->save();
         }
 
         //Store Image
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        if ($request->hasFile('image')) {
             $photo->addMediaFromRequest('image')->toMediaCollection('payload');
         }
 

@@ -22,8 +22,8 @@
 
                     @if ($errors->has('title'))
                         <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('title') }}</strong>
-                    </span>
+                            <strong>{{ $errors->first('title') }}</strong>
+                        </span>
                     @endif
                 </div>
 
@@ -32,8 +32,8 @@
                     <textarea id="content" name="content" class="form-control" tabindex="2">{{ $article->content }}</textarea>
                     @if ($errors->has('content'))
                         <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('content') }}</strong>
-                    </span>
+                            <strong>{{ $errors->first('content') }}</strong>
+                        </span>
                     @endif
                 </div>
 

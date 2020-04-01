@@ -35,6 +35,12 @@
             <div class="form-group">
                 <label for="image">Файл</label>
                 <input id="image" name="image" class="form-control-file" type="file" accept="image/*">
+
+                @if ($errors->has('image'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('image') }}</strong>
+                    </span>
+                @endif
             </div>
 
             <input type="submit" value="Сохранить" class="btn btn-success">

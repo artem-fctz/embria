@@ -16,7 +16,7 @@
 
             <div class="form-group">
                 <label for="title">Название</label>
-                <input id="title" name="title" class="form-control" type="text"  tabindex="1">
+                <input id="title" name="title" class="form-control" type="text"  tabindex="1" value="{{ old('title') }}">
 
                 @if ($errors->has('title'))
                     <span class="invalid-feedback" role="alert">
@@ -27,7 +27,13 @@
 
             <div class="form-group">
                 <label for="image">Файл</label>
-                <input id="image" name="image" class="form-control-file" type="file" accept="image/*">
+                <input id="image" name="image" class="form-control-file" type="file" accept="image/*" value="{{ old('image') }}">
+
+                @if ($errors->has('image'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('image') }}</strong>
+                    </span>
+                @endif
             </div>
 
             <input type="submit" value="Сохранить" class="btn btn-success">

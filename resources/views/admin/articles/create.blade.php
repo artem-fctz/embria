@@ -17,22 +17,22 @@
 
                 <div class="form-group">
                     <label for="title">Название</label>
-                    <input id="title" name="title" class="form-control" type="text" tabindex="1">
+                    <input id="title" name="title" class="form-control" type="text" tabindex="1" value="{{ old('title') }}">
 
                     @if ($errors->has('title'))
                         <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('title') }}</strong>
-                    </span>
+                            <strong>{{ $errors->first('title') }}</strong>
+                        </span>
                     @endif
                 </div>
 
                 <div class="form-group">
                     <label for="content">Содержание</label>
-                    <textarea id="content" name="content" class="form-control" tabindex="2"></textarea>
+                    <textarea id="content" name="content" class="form-control" tabindex="2"> {{ old('content') }}</textarea>
                     @if ($errors->has('content'))
                         <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('content') }}</strong>
-                    </span>
+                            <strong>{{ $errors->first('content') }}</strong>
+                        </span>
                     @endif
                 </div>
 
