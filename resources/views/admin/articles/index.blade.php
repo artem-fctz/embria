@@ -27,12 +27,35 @@
                         <td>{{ $article->likes->count() }}</td>
                         <td><a href="{{ route('admin.articles.edit', $article->id) }}">Редактировать</a></td>
                         <td>
-                            <form action="{{ route('admin.articles.destroy', $article->id) }}" method="POST">
-                                @method('DELETE')
-                                @csrf
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$article->id}}">
+                                Удалить
+                            </button>
 
-                                <input type="submit" value="Удалить">
-                            </form>
+                            <!-- Modal -->
+                            <div class="modal fade" id="deleteModal{{$article->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Удаление статьи</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Вы уверены, что хотите удалить статью #{{ $article->id }}?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+                                            <form action="{{ route('admin.articles.destroy', $article->id) }}" id="deleteModalForm{{$article->id}}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+
+                                                <button class="btn btn-primary" type="submit" form="deleteModalForm{{$article->id}}">Удалить</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

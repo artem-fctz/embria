@@ -35,12 +35,35 @@
                         <td>{{ $photo->likes->count() }}</td>
                         <td><a href="{{ route('admin.photos.edit', $photo->id) }}">Редактировать</a></td>
                         <td>
-                            <form action="{{ route('admin.photos.destroy', $photo->id) }}" method="POST">
-                                @method('DELETE')
-                                @csrf
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$photo->id}}">
+                                Удалить
+                            </button>
 
-                                <input type="submit" value="Удалить">
-                            </form>
+                            <!-- Modal -->
+                            <div class="modal fade" id="deleteModal{{$photo->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Удаление изображения</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Вы уверены, что хотите удалить изображение #{{ $photo->id }}?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+                                            <form action="{{ route('admin.photos.destroy', $photo->id) }}" id="deleteModalForm{{$photo->id}}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+
+                                                <button class="btn btn-primary" type="submit" form="deleteModalForm{{$photo->id}}">Удалить</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
